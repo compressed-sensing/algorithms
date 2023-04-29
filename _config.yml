@@ -1,0 +1,44 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Compressed Sensing
+author: Parisima Abdali & Shubham Gupta
+copyright: "2023"  # Copyright year to be placed in the footer
+# logo: logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: auto
+  timeout: 120
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - dollarmath
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# set to author_year format
+sphinx:
+  html4_writer: {"citation_show_urls": False, "citation_references": "full", "external_links": False}
+  config:
+    bibtex_reference_style: author_year
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/compressed-sensing/algorithms # Online location of your book
+  branch: main # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true

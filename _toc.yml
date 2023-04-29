@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+- caption: Background
+  chapters:
+  - file: notebooks/markdown.md
+- caption: TV Denoising
+  chapters:
+    - file: notebooks/notebooks.ipynb
+- caption: Compressed Sensing
+  chapters:
+    - file: notebooks/markdown-notebooks.md

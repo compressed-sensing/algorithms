@@ -1,0 +1,16 @@
+name: cs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - matplotlib
+  - numba
+  - scikit-learn
+  - jupyter-book
+  - jupyterlab
+  - pre-commit
+  - ffmpeg
+  - tabulate
+  - pip
+  - conda-lock
