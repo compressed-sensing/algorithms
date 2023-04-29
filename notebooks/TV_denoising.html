@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2D TV deblurring &#8212; Compressed Sensing</title>
+    <title>2D TV Denoising &#8212; Compressed Sensing</title>
   
   
   
@@ -157,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="1D_TVD_Ivan_notes.html">1D TV Denoising algorithms</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="TV_Condat.html">1D TV Denosing using Condat Algorithm</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">2D TV deblurring</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2D TV Denoising</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Adaptive_TV_denoising.html">TV Denoising with Adaptive learning rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TV_Debluring.html">2D Total variation deblurring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
@@ -348,7 +348,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>2D TV deblurring</h1>
+    <h1>2D TV Denoising</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,8 +376,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="d-tv-deblurring">
-<h1>2D TV deblurring<a class="headerlink" href="#d-tv-deblurring" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="d-tv-denoising">
+<h1>2D TV Denoising<a class="headerlink" href="#d-tv-denoising" title="Permalink to this headline">#</a></h1>
 <p><a href="https://colab.research.google.com/github/compressed-sensing/algorithms/blob/feature%2Fnotebooks/notebooks/TV_denoising.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h2>
@@ -422,7 +422,7 @@ document.write(`
 (512, 512)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f55b6d356d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa8bb74c6d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/0cb3f3f203c3c032d82def254da609f836f1b1828d1f3d97025439049e0e4057.png" src="../_images/0cb3f3f203c3c032d82def254da609f836f1b1828d1f3d97025439049e0e4057.png" />
@@ -512,7 +512,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4c33f08bf4e332372a7dea901f59d09f2a23eee1a41862b0c93f91c076d38ae4.png" src="../_images/4c33f08bf4e332372a7dea901f59d09f2a23eee1a41862b0c93f91c076d38ae4.png" />
+<img alt="../_images/f4ff925a36c57ffdea22bee42ed398ea939d93cdd75eff85b498def0ca78d4d5.png" src="../_images/f4ff925a36c57ffdea22bee42ed398ea939d93cdd75eff85b498def0ca78d4d5.png" />
 </div>
 </div>
 </div>
@@ -550,7 +550,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5ca2548b1a9bbfc3b1f6794abef96d7957220606e2894d6d9b6692ab4d36e09.png" src="../_images/b5ca2548b1a9bbfc3b1f6794abef96d7957220606e2894d6d9b6692ab4d36e09.png" />
+<img alt="../_images/1481540bc91aa6f35348b7d3428966a417b12e879a5a1f16800b114b800a0b74.png" src="../_images/1481540bc91aa6f35348b7d3428966a417b12e879a5a1f16800b114b800a0b74.png" />
 </div>
 </div>
 </div>
@@ -649,8 +649,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/aa4250049576ac417c2a6b5983718adf7bdc1b8a77b911a6e65423862716f1e0.png" src="../_images/aa4250049576ac417c2a6b5983718adf7bdc1b8a77b911a6e65423862716f1e0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 5.717556953430176
+<img alt="../_images/df6f6f309bcbc931150bfe0674c5836f3bc3cb670e07a130840ea7a2a97dd689.png" src="../_images/df6f6f309bcbc931150bfe0674c5836f3bc3cb670e07a130840ea7a2a97dd689.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 6.94631552696228
 </pre></div>
 </div>
 </div>
@@ -665,10 +665,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.518845625793993
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.435957308457848
 </pre></div>
 </div>
-<img alt="../_images/d8c7c1cf814347ef3faee32a99c328c2410647202a9fada80f9268123193a81a.png" src="../_images/d8c7c1cf814347ef3faee32a99c328c2410647202a9fada80f9268123193a81a.png" />
+<img alt="../_images/59f389faf4990f3bb7a1e273185495814de2703adbe6427618620da272a1b433.png" src="../_images/59f389faf4990f3bb7a1e273185495814de2703adbe6427618620da272a1b433.png" />
 </div>
 </div>
 </div>

@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/TV_Condat';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2D TV deblurring" href="TV_denoising.html" />
+    <link rel="next" title="2D TV Denoising" href="TV_denoising.html" />
     <link rel="prev" title="1D TV Denoising algorithms" href="1D_TVD_Ivan_notes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -157,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="1D_TVD_Ivan_notes.html">1D TV Denoising algorithms</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1D TV Denosing using Condat Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TV_denoising.html">2D TV deblurring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TV_denoising.html">2D TV Denoising</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Adaptive_TV_denoising.html">TV Denoising with Adaptive learning rate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TV_Debluring.html">2D Total variation deblurring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
@@ -606,7 +606,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 0.004761934280395508
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 0.009161949157714844
 </pre></div>
 </div>
 <img alt="../_images/a4b9e9064c00bd9871b446077df436de84e5aaf604237d00bd36494982aafac2.png" src="../_images/a4b9e9064c00bd9871b446077df436de84e5aaf604237d00bd36494982aafac2.png" />
@@ -620,7 +620,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f60528fdfd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fce5d600430&gt;]
 </pre></div>
 </div>
 <img alt="../_images/e77654341ddf6ff24e9cc2d54e5e3883717f8e0367129a473ca0b6273e12ef53.png" src="../_images/e77654341ddf6ff24e9cc2d54e5e3883717f8e0367129a473ca0b6273e12ef53.png" />
@@ -703,7 +703,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;noisy signal&#39;)
 </pre></div>
 </div>
-<img alt="../_images/a4ac48e7d34434c6029feaea55a3f311a5db560fc4bbd75c24b585ab0dae80e7.png" src="../_images/a4ac48e7d34434c6029feaea55a3f311a5db560fc4bbd75c24b585ab0dae80e7.png" />
+<img alt="../_images/3d42417d40a8d30012875a9f968f99247126282f6523c63b07de2a0000b6aeb9.png" src="../_images/3d42417d40a8d30012875a9f968f99247126282f6523c63b07de2a0000b6aeb9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -725,11 +725,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>noisy_img psnr = 20.815516752923713
-noisy_img psnr = 19.27659598604469
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>noisy_img psnr = 20.794934270797874
+noisy_img psnr = 19.278752047490265
 </pre></div>
 </div>
-<img alt="../_images/236c5acd25dba3eed2a27aef8468bcc6648534d090cfe6e723482e4e60c9e355.png" src="../_images/236c5acd25dba3eed2a27aef8468bcc6648534d090cfe6e723482e4e60c9e355.png" />
+<img alt="../_images/fb4296d0bd29a2d4dfd52c90f7e78a81c3009bcb262293770379848b3d8a685f.png" src="../_images/fb4296d0bd29a2d4dfd52c90f7e78a81c3009bcb262293770379848b3d8a685f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -774,11 +774,11 @@ noisy_img psnr = 19.27659598604469
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>noisy_img psnr = 20.815516752923713
-noisy_img psnr = 10.614324564579436
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>noisy_img psnr = 20.794934270797874
+noisy_img psnr = 10.615433814383133
 </pre></div>
 </div>
-<img alt="../_images/cc5a2248bf851885b96594aedb809b0060c4fd7937674fe402381b7ae73ab275.png" src="../_images/cc5a2248bf851885b96594aedb809b0060c4fd7937674fe402381b7ae73ab275.png" />
+<img alt="../_images/7199153b3a028388703e496819c1f34c736c2bf09ec89c1ff3844d619a1b3a74.png" src="../_images/7199153b3a028388703e496819c1f34c736c2bf09ec89c1ff3844d619a1b3a74.png" />
 </div>
 </div>
 </div>
@@ -828,7 +828,7 @@ noisy_img psnr = 10.614324564579436
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2D TV deblurring</p>
+        <p class="prev-next-title">2D TV Denoising</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
