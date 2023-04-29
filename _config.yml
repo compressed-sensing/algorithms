@@ -10,7 +10,7 @@ copyright: "2023"  # Copyright year to be placed in the footer
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: auto
-  timeout: 120
+  timeout: 1200
 
 parse:
   myst_enable_extensions:

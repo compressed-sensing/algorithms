@@ -32,6 +32,16 @@ as described above. Then run
 jupyter book build .
 ```
 
+To speed up the continuous integration, we also generated a
+[conda lock](https://conda.github.io/conda-lock/) file for linux as follows.
+
+```
+conda-lock lock --mamba -f environment.yaml -p linux-64 --kind explicit
+```
+
+This file lives in [conda-linux-64.lock](https://github.com/m2lines/L96_demo/blob/main/conda-linux-64.lock).
+It should be regenerated periorically.
+
 When you run this command, the notebooks will be executed.
 The built html will be placed in '\_build/html`.
 To preview the book, run

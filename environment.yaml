@@ -14,3 +14,5 @@ dependencies:
   - tabulate
   - pip
   - conda-lock
+  - opencv
+  - scikit-image
