@@ -12,6 +12,7 @@ parts:
     - file: notebooks/1D_TVD_Ivan_notes.ipynb
     - file: notebooks/TV_Condat.ipynb
     - file: notebooks/TV_denoising.ipynb
+    - file: notebooks/Adaptive_TV_denoising.ipynb
     - file: notebooks/TV_Debluring.ipynb
     - file: notebooks/notebooks.ipynb
 - caption: Compressed Sensing
