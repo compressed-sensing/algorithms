@@ -1,0 +1,79 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/share/miniconda/envs/L96M2lines/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Reading image (grayscale)
+url = "https://i.stack.imgur.com/kP0u2.png"
+# url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRsK5QFJ1arEQlnHEJ-020xbO30BgdYgPJBg&usqp=CAU'
+# url='https://unsplash.com/photos/IoZA1Mwiq2g/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTZ8fGJsYWNrJTIwYW5kJTIwd2hpdGUlMjBmbG93ZXJ8ZW58MHx8fHwxNjc5MzQxODY4&force=true&w=640'
+with urllib.request.urlopen(url) as url_response:
+    img_array = np.asarray(bytearray(url_response.read()), dtype=np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
+# img is a 3-dimensional numpy array (third number indicates channel)
+x = img.astype(float) / 255.0
+print(type(img))
+print(img.shape)
+plt.imshow(x, cmap="gray")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mHTTPError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[2], line 5[0m
+[1;32m      2[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://i.stack.imgur.com/kP0u2.png[39m[38;5;124m"[39m
+[1;32m      3[0m [38;5;66;03m# url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRsK5QFJ1arEQlnHEJ-020xbO30BgdYgPJBg&usqp=CAU'[39;00m
+[1;32m      4[0m [38;5;66;03m# url='https://unsplash.com/photos/IoZA1Mwiq2g/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTZ8fGJsYWNrJTIwYW5kJTIwd2hpdGUlMjBmbG93ZXJ8ZW58MHx8fHwxNjc5MzQxODY4&force=true&w=640'[39;00m
+[0;32m----> 5[0m [38;5;28;01mwith[39;00m [43murllib[49m[38;5;241;43m.[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43murlopen[49m[43m([49m[43murl[49m[43m)[49m [38;5;28;01mas[39;00m url_response:
+[1;32m      6[0m     img_array [38;5;241m=[39m np[38;5;241m.[39masarray([38;5;28mbytearray[39m(url_response[38;5;241m.[39mread()), dtype[38;5;241m=[39mnp[38;5;241m.[39muint8)
+[1;32m      7[0m     img [38;5;241m=[39m cv2[38;5;241m.[39mimdecode(img_array, cv2[38;5;241m.[39mIMREAD_GRAYSCALE)
+
+File [0;32m/usr/share/miniconda/envs/L96M2lines/lib/python3.9/urllib/request.py:214[0m, in [0;36murlopen[0;34m(url, data, timeout, cafile, capath, cadefault, context)[0m
+[1;32m    212[0m [38;5;28;01melse[39;00m:
+[1;32m    213[0m     opener [38;5;241m=[39m _opener
+[0;32m--> 214[0m [38;5;28;01mreturn[39;00m [43mopener[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mdata[49m[43m,[49m[43m [49m[43mtimeout[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda/envs/L96M2lines/lib/python3.9/urllib/request.py:523[0m, in [0;36mOpenerDirector.open[0;34m(self, fullurl, data, timeout)[0m
+[1;32m    521[0m [38;5;28;01mfor[39;00m processor [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mprocess_response[38;5;241m.[39mget(protocol, []):
+[1;32m    522[0m     meth [38;5;241m=[39m [38;5;28mgetattr[39m(processor, meth_name)
+[0;32m--> 523[0m     response [38;5;241m=[39m [43mmeth[49m[43m([49m[43mreq[49m[43m,[49m[43m [49m[43mresponse[49m[43m)[49m
+[1;32m    525[0m [38;5;28;01mreturn[39;00m response
+
+File [0;32m/usr/share/miniconda/envs/L96M2lines/lib/python3.9/urllib/request.py:632[0m, in [0;36mHTTPErrorProcessor.http_response[0;34m(self, request, response)[0m
+[1;32m    629[0m [38;5;66;03m# According to RFC 2616, "2xx" code indicates that the client's[39;00m
+[1;32m    630[0m [38;5;66;03m# request was successfully received, understood, and accepted.[39;00m
+[1;32m    631[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;241m200[39m [38;5;241m<[39m[38;5;241m=[39m code [38;5;241m<[39m [38;5;241m300[39m):
+[0;32m--> 632[0m     response [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mparent[49m[38;5;241;43m.[39;49m[43merror[49m[43m([49m
+[1;32m    633[0m [43m        [49m[38;5;124;43m'[39;49m[38;5;124;43mhttp[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mrequest[49m[43m,[49m[43m [49m[43mresponse[49m[43m,[49m[43m [49m[43mcode[49m[43m,[49m[43m [49m[43mmsg[49m[43m,[49m[43m [49m[43mhdrs[49m[43m)[49m
+[1;32m    635[0m [38;5;28;01mreturn[39;00m response
+
+File [0;32m/usr/share/miniconda/envs/L96M2lines/lib/python3.9/urllib/request.py:561[0m, in [0;36mOpenerDirector.error[0;34m(self, proto, *args)[0m
+[1;32m    559[0m [38;5;28;01mif[39;00m http_err:
+[1;32m    560[0m     args [38;5;241m=[39m ([38;5;28mdict[39m, [38;5;124m'[39m[38;5;124mdefault[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mhttp_error_default[39m[38;5;124m'[39m) [38;5;241m+[39m orig_args
+[0;32m--> 561[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_chain[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m)[49m
+
+File [0;32m/usr/share/miniconda/envs/L96M2lines/lib/python3.9/urllib/request.py:494[0m, in [0;36mOpenerDirector._call_chain[0;34m(self, chain, kind, meth_name, *args)[0m
+[1;32m    492[0m [38;5;28;01mfor[39;00m handler [38;5;129;01min[39;00m handlers:
+[1;32m    493[0m     func [38;5;241m=[39m [38;5;28mgetattr[39m(handler, meth_name)
+[0;32m--> 494[0m     result [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m)[49m
+[1;32m    495[0m     [38;5;28;01mif[39;00m result [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    496[0m         [38;5;28;01mreturn[39;00m result
+
+File [0;32m/usr/share/miniconda/envs/L96M2lines/lib/python3.9/urllib/request.py:641[0m, in [0;36mHTTPDefaultErrorHandler.http_error_default[0;34m(self, req, fp, code, msg, hdrs)[0m
+[1;32m    640[0m [38;5;28;01mdef[39;00m [38;5;21mhttp_error_default[39m([38;5;28mself[39m, req, fp, code, msg, hdrs):
+[0;32m--> 641[0m     [38;5;28;01mraise[39;00m HTTPError(req[38;5;241m.[39mfull_url, code, msg, hdrs, fp)
+
+[0;31mHTTPError[0m: HTTP Error 502: Gateway Error
+
