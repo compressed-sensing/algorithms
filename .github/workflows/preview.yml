@@ -125,3 +125,11 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: _build/html
         publish_branch: preview-${{ github.event.pull_request.number }}
+        keep_files: false
+    - name: Comment on PR
+      uses: unsplash/comment-on-pr@v1
+      with:
+        message: |
+          Preview of changes: https://compressed-sensing.github.io/algorithms/preview-${{ github.event.pull_request.number }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
