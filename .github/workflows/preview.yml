@@ -126,10 +126,17 @@ jobs:
         publish_dir: _build/html
         publish_branch: preview-${{ github.event.pull_request.number }}
         keep_files: false
-    - name: Comment on PR
-      uses: unsplash/comment-on-pr@v1.3.0
+    - name: Add comment with preview link
+      uses: actions/github-script@v4
       with:
-        message: |
-          Preview of changes: https://compressed-sensing.github.io/algorithms/preview-${{ github.event.pull_request.number }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const previewUrl = `https://${process.env.GITHUB_REPOSITORY}.github.io/${process.env.GITHUB_REPOSITORY.split('/')[1]}/preview-${process.env.PR_NUMBER}/`;
+          github.issues.createComment({
+            issue_number: process.env.PR_NUMBER,
+            owner: process.env.GITHUB_REPOSITORY.split('/')[0],
+            repo: process.env.GITHUB_REPOSITORY.split('/')[1],
+            body: `The preview for this pull request is now available at ${previewUrl}`
+          });
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
