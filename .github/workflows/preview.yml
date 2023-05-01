@@ -127,7 +127,7 @@ jobs:
         publish_branch: preview-${{ github.event.pull_request.number }}
         keep_files: false
     - name: Comment on PR
-      uses: unsplash/comment-on-pr@v1
+      uses: unsplash/comment-on-pr@v1.3.0
       with:
         message: |
           Preview of changes: https://compressed-sensing.github.io/algorithms/preview-${{ github.event.pull_request.number }}
