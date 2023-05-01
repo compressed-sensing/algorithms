@@ -63,7 +63,6 @@ jobs:
       uses: rossjrw/pr-preview-action@v1
       with:
         source-dir: _build/html
-        preview-branch: preview-${{ github.event.pull_request.number }}
 
 
 # name: Preview PR Changes
