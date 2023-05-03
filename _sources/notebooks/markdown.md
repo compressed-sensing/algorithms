@@ -46,8 +46,7 @@ render properly.
 For example, if the references for your book are stored in `references.bib`,
 then the bibliography is inserted with:
 
-```{bibliography}
-```
+moved to end matter.
 
 ## Learn more
 
