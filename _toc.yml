@@ -18,3 +18,6 @@ parts:
 - caption: Compressed Sensing
   chapters:
     - file: notebooks/markdown-notebooks.md
+- caption: End Matter
+  chapters:
+    - file: bibliography.md
