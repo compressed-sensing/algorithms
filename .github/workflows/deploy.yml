@@ -4,7 +4,8 @@ name: build-and-deploy-book
 on:
   push:
     branches:
-      - main
+      base:
+        - main
   # pull_request:
   #   branches:
   #     - main
