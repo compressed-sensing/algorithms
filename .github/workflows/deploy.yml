@@ -4,10 +4,9 @@ name: build-and-deploy-book
 on:
   push:
     branches:
-      branches:
-        - development
-      base:
-        - main
+      - development
+    base:
+      - main
   # pull_request:
   #   branches:
   #     - main
