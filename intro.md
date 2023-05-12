@@ -12,8 +12,3 @@ To achieve this, we started by implementing TVd for 1-dimensional signals and th
 Finally, we implement proximal gradient descent {cite}`boyd` for compressed sensing on MRI images. We solve proximal gradient descent using primal dual splitting.
 
 This is a Work-in-Progress project for the coursework ECE-GY-6123 Image and Video Processing by Dr. Yao Wang on Compressed Sensing techniques. The project is built by [Parisima Abdali](https://github.com/parisimaa) and [Shubham Gupta](https://github.com/iamshubhamgupto).
-
-
-
-```{tableofcontents}
-```
