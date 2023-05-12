@@ -10,3 +10,4 @@ __pycache__
 *.pth
 _build/*
 _notebook_cache/*
+.jupyter_cache/
