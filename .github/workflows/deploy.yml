@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    base:
+      - main
   # pull_request:
   #   branches:
   #     - main
@@ -40,7 +42,6 @@ jobs:
     - name: 👀 Check Conda environment
       shell: bash -l {0}
       run: |
-          pip install -r requirements.txt
           conda info
           conda list
     - name: 📦 Cache Notebooks

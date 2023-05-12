@@ -8,6 +8,10 @@ on:
       - reopened
       - synchronize
       - closed
+    branches:
+      - development
+    base:
+      - main
 
 concurrency: preview-${{ github.ref }}
 
