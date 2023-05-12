@@ -5,12 +5,12 @@
 This project uses [Jupyter Book](https://jupyterbook.org/) to organize a collection of
 Jupyter Notebooks into a website.
 
-- The notebooks all live in the [notebooks]() directory.
+- The notebooks all live in the [notebooks](notebooks) directory.
   Note that the notebooks are stored in "stripped" form, without any outputs of execution saved.
   (They are executed as part of the build process.)
-- The table of contents is located in [\_toc.yml]().
-- The book configuration is in [\_config.yml]().
-- The references are in [\_references.bib]().
+- The table of contents is located in [\_toc.yml](_toc.yml).
+- The book configuration is in [\_config.yml](_config.yml).
+- The references are in [references.bib](references.bib).
 
 ## The Environment
 
