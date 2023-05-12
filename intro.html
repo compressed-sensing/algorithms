@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="notebooks/markdown.html" />
+    <link rel="next" title="1D TV Denoising algorithms" href="notebooks/1D_TVD_Ivan_notes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -147,23 +147,13 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/markdown.html">Markdown Files</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">TV Denoising</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TV Denoising</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="notebooks/1D_TVD_Ivan_notes.html">1D TV Denoising algorithms</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="notebooks/TV_Condat.html">1D TV Denosing using Condat Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks/TV_denoising.html">2D TV Denoising</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/Adaptive_TV_denoising.html">TV Denoising with Adaptive learning rate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/TV_Debluring.html">2D Total variation deblurring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/notebooks.html">Content with notebooks</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compressed Sensing</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Adaptive_TV_denoising.html">TV Denoising with Adaptive regularizer</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">End Matter</span></p>
 <ul class="nav bd-sidenav">
@@ -366,41 +356,17 @@ document.write(`
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>🚧🚧 Check back later for an updated version. 🚧🚧</p>
-<p>In medical scenarios, imaging is crucial to provide context for diagnosis and treatment. Magnetic Resonance (MR) imaging has made it possible to view a patient’s internal structures without invasive procedures. However, these methods have limitations such as patient safety, speed, and image quality that need to be addressed <span id="id1">[<a class="reference internal" href="bibliography.html#id11" title="Christian G Graff and Emil Y Sidky. Compressive sensing in medical imaging. Appl Opt, 54(8):C23–44, March 2015.">Graff and Sidky, 2015</a>]</span>.</p>
-<p>One reason MRI imaging is slow is because they require multiple samples of the same region to create a single view. The time taken to generate these images could be reduced if we could construct the entire view using fewer samples. Our work focuses on the application of compressed sensing, a technique that reconstructs the original signal from a sparse sample, thus requiring fewer samples than the Nyquist sampling criteria <span id="id2">[<a class="reference internal" href="bibliography.html#id9" title="Michael Lustig, David Donoho, and John M. Pauly. Sparse mri: the application of compressed sensing for rapid mr imaging. Magnetic Resonance in Medicine, 58(6):1182-1195, 2007. URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.21391, arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/mrm.21391, doi:https://doi.org/10.1002/mrm.21391.">Lustig <em>et al.</em>, 2007</a>, <a class="reference internal" href="bibliography.html#id8" title="Jian Zhang, Shaohui Liu, Debin Zhao, Ruiqin Xiong, and Siwei Ma. Improved total variation based image compressive sensing recovery by nonlocal regularization. 2012. arXiv:1208.3716.">Zhang <em>et al.</em>, 2012</a>]</span>.</p>
+<p>In medical scenarios, imaging is crucial to provide context for diagnosis and treatment. Magnetic Resonance (MR) imaging has made it possible to view a patient’s internal structures without invasive procedures. However, these methods have limitations such as patient safety, speed, and image quality that need to be addressed <span id="id1">[<a class="reference internal" href="bibliography.html#id11" title="Christian G Graff and Emil Y Sidky. Compressive sensing in medical imaging. Appl Opt, 54(8):C23–44, March 2015.">Graff and Sidky, 2015</a>, <a class="reference internal" href="bibliography.html#id10" title="Musyyab Yousufi, Muhammad Amir, Umer Javed, Muhammad Tayyib, Suheel Abdullah, Hayat Ullah, Ijaz Mansoor Qureshi, Khurram Saleem Alimgeer, Muhammad Waseem Akram, and Khan Bahadar Khan. Application of compressive sensing to ultrasound images: a review. BioMed Research International, 2019:7861651, Nov 2019. URL: https://doi.org/10.1155/2019/7861651, doi:10.1155/2019/7861651.">Yousufi <em>et al.</em>, 2019</a>]</span>.</p>
+<p>One reason MRI imaging is slow is because they require multiple samples of the same region to create a single view. The time taken to generate these images could be reduced if we could construct the entire view using fewer samples. Our work focuses on the application of compressed sensing, a technique that reconstructs the original signal from a sparse sample, thus requiring fewer samples than the Nyquist sampling criteria <span id="id2">[<a class="reference internal" href="bibliography.html#id9" title="Michael Lustig, David Donoho, and John M. Pauly. Sparse mri: the application of compressed sensing for rapid mr imaging. Magnetic Resonance in Medicine, 58(6):1182-1195, 2007. URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/mrm.21391, arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/mrm.21391, doi:https://doi.org/10.1002/mrm.21391.">Lustig <em>et al.</em>, 2007</a>, <a class="reference internal" href="bibliography.html#id7" title="Saad Qaisar, Rana Muhammad Bilal, Wafa Iqbal, Muqaddas Naureen, and Sungyoung Lee. Compressive sensing: from theory to applications, a survey. Journal of Communications and Networks, 15(5):443-456, 2013. doi:10.1109/JCN.2013.000083.">Qaisar <em>et al.</em>, 2013</a>, <a class="reference internal" href="bibliography.html#id8" title="Jian Zhang, Shaohui Liu, Debin Zhao, Ruiqin Xiong, and Siwei Ma. Improved total variation based image compressive sensing recovery by nonlocal regularization. 2012. arXiv:1208.3716.">Zhang <em>et al.</em>, 2012</a>]</span>.</p>
 <p>Compressed sensing is a technique that can be implemented using various algorithms and regularizers, such as those proposed in <span id="id3">[<a class="reference internal" href="bibliography.html#id5" title="Antonin Chambolle and Thomas Pock. A first-order primal-dual algorithm for convex problems with applications to imaging. Journal of Mathematical Imaging and Vision, 40(1):120-145, May 2011. URL: https://doi.org/10.1007/s10851-010-0251-1, doi:10.1007/s10851-010-0251-1.">Chambolle and Pock, 2011</a>, <a class="reference internal" href="bibliography.html#id6" title="James A. Clarkson and C. Raymond Adams. On definitions of bounded variation for functions of two variables. Transactions of the American Mathematical Society, 35(4):824–854, 1933. URL: http://www.jstor.org/stable/1989593 (visited on 2023-04-04).">Clarkson and Adams, 1933</a>, <a class="reference internal" href="bibliography.html#id16" title="Laurent Condat. A direct algorithm for 1-d total variation denoising. IEEE Signal Processing Letters, 20(11):1054-1057, 2013. doi:10.1109/LSP.2013.2278339.">Condat, 2013</a>, <a class="reference internal" href="bibliography.html#id4" title="Neal Parikh and Stephen Boyd. Proximal algorithms. Found. Trends Optim., 1(3):127–239, jan 2014. URL: https://doi.org/10.1561/2400000003, doi:10.1561/2400000003.">Parikh and Boyd, 2014</a>]</span>. The first objective of our project is to understand and solve the Total Variation denoising (TVd) problem on grayscale images, which can be achieved by using the L2 regularizer optimized with the ADMM algorithm <span id="id4">[<a class="reference internal" href="bibliography.html#id2" title="Stanley H. Chan, Ramsin Khoshabeh, Kristofor B. Gibson, Philip E. Gill, and Truong Q. Nguyen. An augmented lagrangian method for total variation video restoration. IEEE Transactions on Image Processing, 20(11):3097-3111, 2011. doi:10.1109/TIP.2011.2158229.">Chan <em>et al.</em>, 2011</a>]</span>.</p>
 <p>To achieve this, we started by implementing TVd for 1-dimensional signals and then proceeded to implement TVd L2 for images using the ADMM algorithm.</p>
 <p>Finally, we implement proximal gradient descent <span id="id5">[<a class="reference internal" href="bibliography.html#id4" title="Neal Parikh and Stephen Boyd. Proximal algorithms. Found. Trends Optim., 1(3):127–239, jan 2014. URL: https://doi.org/10.1561/2400000003, doi:10.1561/2400000003.">Parikh and Boyd, 2014</a>]</span> for compressed sensing on MRI images. We solve proximal gradient descent using primal dual splitting.</p>
 <p>This is a Work-in-Progress project for the coursework ECE-GY-6123 Image and Video Processing by Dr. Yao Wang on Compressed Sensing techniques. The project is built by <a class="reference external" href="https://github.com/parisimaa">Parisima Abdali</a> and <a class="reference external" href="https://github.com/iamshubhamgupto">Shubham Gupta</a>.</p>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/markdown.html">Markdown Files</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">TV Denoising</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/1D_TVD_Ivan_notes.html">1D TV Denoising algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/1D_TVD_Ivan_notes.html#using-linear-systems">Using linear systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/TV_Condat.html">1D TV Denosing using Condat Algorithm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/TV_denoising.html">2D TV Denoising</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/Adaptive_TV_denoising.html">TV Denoising with Adaptive learning rate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/TV_Debluring.html">2D Total variation deblurring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/notebooks.html">Content with notebooks</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compressed Sensing</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">End Matter</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">References</a></li>
-</ul>
 </div>
 </div>
 
@@ -436,11 +402,11 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="notebooks/markdown.html"
+       href="notebooks/1D_TVD_Ivan_notes.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">1D TV Denoising algorithms</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

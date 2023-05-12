@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Denoising with Adaptive learning rate &#8212; Compressed Sensing</title>
+    <title>TV Denoising with Adaptive regularizer &#8212; Compressed Sensing</title>
   
   
   
@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Adaptive_TV_denoising';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2D Total variation deblurring" href="TV_Debluring.html" />
+    <link rel="next" title="References" href="../bibliography.html" />
     <link rel="prev" title="2D TV Denoising" href="TV_denoising.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -148,23 +148,13 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">TV Denoising</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TV Denoising</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1D_TVD_Ivan_notes.html">1D TV Denoising algorithms</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="TV_Condat.html">1D TV Denosing using Condat Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TV_denoising.html">2D TV Denoising</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">TV Denoising with Adaptive learning rate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TV_Debluring.html">2D Total variation deblurring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compressed Sensing</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TV Denoising with Adaptive regularizer</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">End Matter</span></p>
 <ul class="nav bd-sidenav">
@@ -352,7 +342,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>TV Denoising with Adaptive learning rate</h1>
+    <h1>TV Denoising with Adaptive regularizer</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -381,8 +371,8 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/compressed-sensing/algorithms/blob/development/notebooks/Adaptive_TV_denoising.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="tv-denoising-with-adaptive-learning-rate">
-<h1>TV Denoising with Adaptive learning rate<a class="headerlink" href="#tv-denoising-with-adaptive-learning-rate" title="Permalink to this headline">#</a></h1>
+<div class="tex2jax_ignore mathjax_ignore section" id="tv-denoising-with-adaptive-regularizer">
+<h1>TV Denoising with Adaptive regularizer<a class="headerlink" href="#tv-denoising-with-adaptive-regularizer" title="Permalink to this headline">#</a></h1>
 <div class="section" id="import-libraries">
 <h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -407,8 +397,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading image (grayscale)</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://i.stack.imgur.com/kP0u2.png&quot;</span>
-<span class="c1"># url=&#39;https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRsK5QFJ1arEQlnHEJ-020xbO30BgdYgPJBg&amp;usqp=CAU&#39;</span>
-<span class="c1"># url=&#39;https://unsplash.com/photos/IoZA1Mwiq2g/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTZ8fGJsYWNrJTIwYW5kJTIwd2hpdGUlMjBmbG93ZXJ8ZW58MHx8fHwxNjc5MzQxODY4&amp;force=true&amp;w=640&#39;</span>
 <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">url_response</span><span class="p">:</span>
     <span class="n">img_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">url_response</span><span class="o">.</span><span class="n">read</span><span class="p">()),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">img_array</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
@@ -426,7 +414,7 @@ document.write(`
 (512, 512)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f59f36e2730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f9c0afc6850&gt;
 </pre></div>
 </div>
 <img alt="../_images/0cb3f3f203c3c032d82def254da609f836f1b1828d1f3d97025439049e0e4057.png" src="../_images/0cb3f3f203c3c032d82def254da609f836f1b1828d1f3d97025439049e0e4057.png" />
@@ -501,7 +489,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3a1d21fe81b0cf0d458cfc732733cb17bdd9bdb52eb0be9b9f67b6337500d4ab.png" src="../_images/3a1d21fe81b0cf0d458cfc732733cb17bdd9bdb52eb0be9b9f67b6337500d4ab.png" />
+<img alt="../_images/4985b321e9d67f162836ed23b79256b38a7def414af66218be568e3de6443ae8.png" src="../_images/4985b321e9d67f162836ed23b79256b38a7def414af66218be568e3de6443ae8.png" />
 </div>
 </div>
 </div>
@@ -528,10 +516,10 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;image x&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Dh</span><span class="p">(</span><span class="n">y1</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Dh</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$|D_hx|$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Dv</span><span class="p">(</span><span class="n">y1</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Dv</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$|D_vx|$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -539,7 +527,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4505f69f75e263b9ef46b53ccfff18e5c0be01869a2bcf48aca2dab58cae3a05.png" src="../_images/4505f69f75e263b9ef46b53ccfff18e5c0be01869a2bcf48aca2dab58cae3a05.png" />
+<img alt="../_images/aae4cc36f1aa398ec3d8ae659e14a2fdadda33cfb0a912d2e9d6be008f435185.png" src="../_images/aae4cc36f1aa398ec3d8ae659e14a2fdadda33cfb0a912d2e9d6be008f435185.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -622,7 +610,7 @@ document.write(`
 
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
         <span class="c1"># solve the L2-L2 problem (update x)</span>
-        <span class="n">rhs</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">DhT</span><span class="p">(</span><span class="n">zh</span><span class="p">)</span> <span class="o">+</span> <span class="n">DvT</span><span class="p">(</span><span class="n">zv</span><span class="p">))</span> <span class="o">-</span> <span class="n">DhT</span><span class="p">(</span><span class="n">uh</span><span class="p">)</span> <span class="o">-</span> <span class="n">DvT</span><span class="p">(</span><span class="n">uv</span><span class="p">)</span>
+        <span class="n">rhs</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">((</span><span class="n">DhT</span><span class="p">(</span><span class="n">zh</span><span class="p">)</span> <span class="o">+</span> <span class="n">DvT</span><span class="p">(</span><span class="n">zv</span><span class="p">))</span> <span class="o">-</span> <span class="n">DhT</span><span class="p">(</span><span class="n">uh</span><span class="p">)</span> <span class="o">-</span> <span class="n">DvT</span><span class="p">(</span><span class="n">uv</span><span class="p">))</span>
         <span class="n">F_rhs</span> <span class="o">=</span> <span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">rhs</span><span class="p">)</span>
         <span class="n">x_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">F_rhs</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">DDT</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
 
@@ -676,8 +664,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1f64ceb1c7054740de82ef0708104bbc8dea61f6bb318a4f052429d51a5d53ec.png" src="../_images/1f64ceb1c7054740de82ef0708104bbc8dea61f6bb318a4f052429d51a5d53ec.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 12.750556945800781
+<img alt="../_images/15bed15eb98819205876f81eb79a0d3f30bbe58f82c30db8abb61f9db08ca3dd.png" src="../_images/15bed15eb98819205876f81eb79a0d3f30bbe58f82c30db8abb61f9db08ca3dd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 12.053900957107544
 </pre></div>
 </div>
 </div>
@@ -711,8 +699,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f1a683a56d9ce0ded03ffe20a2df9420ab0e9846de3b175bf50e7287a529c6d7.png" src="../_images/f1a683a56d9ce0ded03ffe20a2df9420ab0e9846de3b175bf50e7287a529c6d7.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 12.629719495773315
+<img alt="../_images/708f01180bea671887f359154545db9e831139f005c6edfc2cb2d3b972e851c0.png" src="../_images/708f01180bea671887f359154545db9e831139f005c6edfc2cb2d3b972e851c0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 11.13205075263977
 </pre></div>
 </div>
 </div>
@@ -746,8 +734,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06a4a8541ae3805e9bf68303b3a37a0450f22161a6ff4a54ba291cced059e656.png" src="../_images/06a4a8541ae3805e9bf68303b3a37a0450f22161a6ff4a54ba291cced059e656.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 11.953696727752686
+<img alt="../_images/bd68bf569c4a0aa0ff6fa5cb94ed53b1b922c94761d23a9bb1edce04d3fae9a8.png" src="../_images/bd68bf569c4a0aa0ff6fa5cb94ed53b1b922c94761d23a9bb1edce04d3fae9a8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 11.955820083618164
 </pre></div>
 </div>
 </div>
@@ -778,7 +766,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/63e6a88d996d9eca582fd665b4e44af39feaae8c310bc247fba1463b898e9870.png" src="../_images/63e6a88d996d9eca582fd665b4e44af39feaae8c310bc247fba1463b898e9870.png" />
+<img alt="../_images/90621c562ad8c090c17b5d51c2b54f3720dabea607dd920dbfe9dbef4af4d02f.png" src="../_images/90621c562ad8c090c17b5d51c2b54f3720dabea607dd920dbfe9dbef4af4d02f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -797,10 +785,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2c4ce4b3a381c4c63a3ce73bac904a3a76ff450a2bab785c4c90b1a869d798d2.png" src="../_images/2c4ce4b3a381c4c63a3ce73bac904a3a76ff450a2bab785c4c90b1a869d798d2.png" />
-<img alt="../_images/3124fcd911adfccd80d48cc8b57f2057c7c52a666a03f9ba87f482924f902d1a.png" src="../_images/3124fcd911adfccd80d48cc8b57f2057c7c52a666a03f9ba87f482924f902d1a.png" />
-<img alt="../_images/6e8a4308b32759efcff0b34d19c59fe06881a38b046e1d1a47b37e82a8679525.png" src="../_images/6e8a4308b32759efcff0b34d19c59fe06881a38b046e1d1a47b37e82a8679525.png" />
-<img alt="../_images/5cc3bfb110b19b7e2d87c6bedcd391d182a8ae728a57c40facae5b2f7cf7b51e.png" src="../_images/5cc3bfb110b19b7e2d87c6bedcd391d182a8ae728a57c40facae5b2f7cf7b51e.png" />
+<img alt="../_images/890d71e9eab82262de883fd9bf349b4ac22b8ae7eb4e8bfcfbcde3f577790ca3.png" src="../_images/890d71e9eab82262de883fd9bf349b4ac22b8ae7eb4e8bfcfbcde3f577790ca3.png" />
+<img alt="../_images/029ec515272677f9467a1f9f52d18104fb84ed195fcefcf41a5badccf3af74da.png" src="../_images/029ec515272677f9467a1f9f52d18104fb84ed195fcefcf41a5badccf3af74da.png" />
+<img alt="../_images/3c96e71b1f7dd444831ad4e650771c8df5975bf6be15d75abce6bb91e2ad6535.png" src="../_images/3c96e71b1f7dd444831ad4e650771c8df5975bf6be15d75abce6bb91e2ad6535.png" />
+<img alt="../_images/70b6a01c81d0093ec7762744c3c5caba7d5a414755a0ef4fd9aec7a7b9e02c14.png" src="../_images/70b6a01c81d0093ec7762744c3c5caba7d5a414755a0ef4fd9aec7a7b9e02c14.png" />
 </div>
 </div>
 </div>
@@ -847,11 +835,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="TV_Debluring.html"
+       href="../bibliography.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">2D Total variation deblurring</p>
+        <p class="prev-next-title">References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
