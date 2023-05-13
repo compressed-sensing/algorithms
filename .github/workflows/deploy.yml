@@ -2,7 +2,7 @@ name: build-and-deploy-book
 
 # Trigger the workflow on push to main branch and PRs
 on:
-  pull_request:
+  push:
     branches:
       - main
 
