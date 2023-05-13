@@ -21,7 +21,6 @@ To recreate and activate the environment locally, run
 ```
 conda env create -f environment.yaml
 conda activate cs
-pip install -r requirements.txt
 ```
 
 ## Building the Book

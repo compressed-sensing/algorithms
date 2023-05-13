@@ -16,3 +16,4 @@ dependencies:
   - conda-lock
   - opencv
   - scikit-image
+  - nibabel

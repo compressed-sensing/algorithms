@@ -2,14 +2,9 @@ name: build-and-deploy-book
 
 # Trigger the workflow on push to main branch and PRs
 on:
-  push:
+  pull_request:
     branches:
       - main
-    base:
-      - main
-  # pull_request:
-  #   branches:
-  #     - main
 
 # This job installs dependencies, builds the book, and deploys the html
 jobs:
