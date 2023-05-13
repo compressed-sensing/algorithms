@@ -13,8 +13,9 @@ parts:
     - file: notebooks/TV_Condat.ipynb
     - file: notebooks/TV_denoising.ipynb
     - file: notebooks/Adaptive_TV_denoising.ipynb
-# - caption: Compressed Sensing
-  # chapters:
+- caption: Compressed Sensing
+  chapters:
+    - file: notebooks/CS_MRI.ipynb
 - caption: End Matter
   chapters:
     - file: bibliography.md

@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Adaptive_TV_denoising';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="References" href="../bibliography.html" />
+    <link rel="next" title="Compressed Sensing for MRI" href="CS_MRI.html" />
     <link rel="prev" title="2D TV Denoising" href="TV_denoising.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -155,6 +155,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="TV_Condat.html">1D TV Denosing using Condat Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TV_denoising.html">2D TV Denoising</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">TV Denoising with Adaptive regularizer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compressed Sensing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="CS_MRI.html">Compressed Sensing for MRI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">End Matter</span></p>
 <ul class="nav bd-sidenav">
@@ -414,7 +418,7 @@ document.write(`
 (512, 512)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f9c0afc6850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fbbdc3d3910&gt;
 </pre></div>
 </div>
 <img alt="../_images/0cb3f3f203c3c032d82def254da609f836f1b1828d1f3d97025439049e0e4057.png" src="../_images/0cb3f3f203c3c032d82def254da609f836f1b1828d1f3d97025439049e0e4057.png" />
@@ -489,7 +493,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4985b321e9d67f162836ed23b79256b38a7def414af66218be568e3de6443ae8.png" src="../_images/4985b321e9d67f162836ed23b79256b38a7def414af66218be568e3de6443ae8.png" />
+<img alt="../_images/914fcc11f0542bc210a5b6bc939d28425bff1e73a6ce4b308a892adf0fcca188.png" src="../_images/914fcc11f0542bc210a5b6bc939d28425bff1e73a6ce4b308a892adf0fcca188.png" />
 </div>
 </div>
 </div>
@@ -664,8 +668,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/15bed15eb98819205876f81eb79a0d3f30bbe58f82c30db8abb61f9db08ca3dd.png" src="../_images/15bed15eb98819205876f81eb79a0d3f30bbe58f82c30db8abb61f9db08ca3dd.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 12.053900957107544
+<img alt="../_images/6dc7595a3e14c48590eba771a54150f1c73012d788f213e3e230070082b0fbb8.png" src="../_images/6dc7595a3e14c48590eba771a54150f1c73012d788f213e3e230070082b0fbb8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 14.559276819229126
 </pre></div>
 </div>
 </div>
@@ -699,8 +703,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/708f01180bea671887f359154545db9e831139f005c6edfc2cb2d3b972e851c0.png" src="../_images/708f01180bea671887f359154545db9e831139f005c6edfc2cb2d3b972e851c0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 11.13205075263977
+<img alt="../_images/0a060da936f042e2276c58426204a4d23c2223c23a01f685821332469635c92c.png" src="../_images/0a060da936f042e2276c58426204a4d23c2223c23a01f685821332469635c92c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 15.073326826095581
 </pre></div>
 </div>
 </div>
@@ -734,8 +738,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bd68bf569c4a0aa0ff6fa5cb94ed53b1b922c94761d23a9bb1edce04d3fae9a8.png" src="../_images/bd68bf569c4a0aa0ff6fa5cb94ed53b1b922c94761d23a9bb1edce04d3fae9a8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 11.955820083618164
+<img alt="../_images/049eb8e34986a6118f5b573617b0aa61626017765ebae8fcad36a2ded8e59897.png" src="../_images/049eb8e34986a6118f5b573617b0aa61626017765ebae8fcad36a2ded8e59897.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 14.687494039535522
 </pre></div>
 </div>
 </div>
@@ -766,7 +770,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/90621c562ad8c090c17b5d51c2b54f3720dabea607dd920dbfe9dbef4af4d02f.png" src="../_images/90621c562ad8c090c17b5d51c2b54f3720dabea607dd920dbfe9dbef4af4d02f.png" />
+<img alt="../_images/7acfbd0882ae465e628df83f63a424b807173716fb7aa633bfdcd20a814c6bc7.png" src="../_images/7acfbd0882ae465e628df83f63a424b807173716fb7aa633bfdcd20a814c6bc7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -785,10 +789,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/890d71e9eab82262de883fd9bf349b4ac22b8ae7eb4e8bfcfbcde3f577790ca3.png" src="../_images/890d71e9eab82262de883fd9bf349b4ac22b8ae7eb4e8bfcfbcde3f577790ca3.png" />
-<img alt="../_images/029ec515272677f9467a1f9f52d18104fb84ed195fcefcf41a5badccf3af74da.png" src="../_images/029ec515272677f9467a1f9f52d18104fb84ed195fcefcf41a5badccf3af74da.png" />
-<img alt="../_images/3c96e71b1f7dd444831ad4e650771c8df5975bf6be15d75abce6bb91e2ad6535.png" src="../_images/3c96e71b1f7dd444831ad4e650771c8df5975bf6be15d75abce6bb91e2ad6535.png" />
-<img alt="../_images/70b6a01c81d0093ec7762744c3c5caba7d5a414755a0ef4fd9aec7a7b9e02c14.png" src="../_images/70b6a01c81d0093ec7762744c3c5caba7d5a414755a0ef4fd9aec7a7b9e02c14.png" />
+<img alt="../_images/f72f7d8723683168d3fb72d85db91e952724a6f4174573064efd45e1cb04c719.png" src="../_images/f72f7d8723683168d3fb72d85db91e952724a6f4174573064efd45e1cb04c719.png" />
+<img alt="../_images/4eebf7069c4a964adf515b4473581ec2a0ee50d5c658e6e7816dbc417b07fa99.png" src="../_images/4eebf7069c4a964adf515b4473581ec2a0ee50d5c658e6e7816dbc417b07fa99.png" />
+<img alt="../_images/eac6fc3c10f1b83516b6adb9367ac671abeef59908dbf91b18ad43b844b44381.png" src="../_images/eac6fc3c10f1b83516b6adb9367ac671abeef59908dbf91b18ad43b844b44381.png" />
+<img alt="../_images/bfd40aaedbf5c00677caec467447e8171a184975c3ea80a382af854224e706d9.png" src="../_images/bfd40aaedbf5c00677caec467447e8171a184975c3ea80a382af854224e706d9.png" />
 </div>
 </div>
 </div>
@@ -835,11 +839,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../bibliography.html"
+       href="CS_MRI.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">References</p>
+        <p class="prev-next-title">Compressed Sensing for MRI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
