@@ -6,8 +6,8 @@ One reason MRI imaging is slow is because they require multiple samples of the s
 
 Compressed sensing is a technique that can be implemented using various algorithms and regularizers, such as those proposed in {cite}`chambolle,boyd,clarkson,condat`. The first objective of our project is to understand and solve the Total Variation denoising (TVd) problem on grayscale images, which can be achieved by using the L2 regularizer optimized with the ADMM algorithm {cite}`chan`.
 
-To achieve this, we started by implementing TVd for 1-dimensional signals and then proceeded to implement TVd L2 for images using the ADMM algorithm.
+To achieve this, we started by implementing TVd for 1-dimensional signals and then proceeded to implement TVd for images using the ADMM algorithm.
 
-Finally, we implement proximal gradient descent {cite}`boyd` for compressed sensing on MRI images. We solve proximal gradient descent using primal dual splitting.
+Finally, we implement primal dual splitting algorithm {cit}`boyd` for compressed sensing on MRI images.
 
-This project was developed for the coursework ECE-GY-6123 Image and Video Processing by Dr. Yao Wang on Compressed Sensing techniques. The project is built by [Parisima Abdali](https://github.com/parisimaa) and [Shubham Gupta](https://github.com/iamshubhamgupto).
+This project was developed for the coursework ECE-GY-6123 Image and Video Processing by Dr. Yao Wang. The project is built by [Parisima Abdali](https://github.com/parisimaa) and [Shubham Gupta](https://github.com/iamshubhamgupto).
