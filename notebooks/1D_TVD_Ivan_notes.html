@@ -151,7 +151,6 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">TV Denoising</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1D TV Denoising algorithms</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="TV_Condat.html">1D TV Denosing using Condat Algorithm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TV_denoising.html">2D TV Denoising</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Adaptive_TV_denoising.html">TV Denoising with Adaptive regularizer</a></li>
@@ -356,10 +355,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1D TV Denoising algorithms</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-linear-systems">Using linear systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-linear-systems">Using linear systems</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -372,7 +369,7 @@ document.write(`
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="d-tv-denoising-algorithms">
 <h1>1D TV Denoising algorithms<a class="headerlink" href="#d-tv-denoising-algorithms" title="Permalink to this headline">#</a></h1>
-<p><a href="https://colab.research.google.com/github/compressed-sensing/algorithms/blob/feature%2Fnotebooks/notebooks/1D_TVD_Ivan_notes.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p><a href="https://colab.research.google.com/drive/1o4J-cHjZV24L2N_jXQodSWH9El2MANHq?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <p>Implementation of 1D TVD using Maximization and Minimization algorithm and Iterative clipping algorithm. <a class="reference external" href="https://eeweb.engineering.nyu.edu/iselesni/lecture_notes/TVDmm/TVD_software/html/Example1.html">Reference</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -423,9 +420,8 @@ document.write(`
 <img alt="../_images/d12bb6a18217c692904b5451f4616b74b04be5c2ee37871a69eb5afe59aed366.png" src="../_images/d12bb6a18217c692904b5451f4616b74b04be5c2ee37871a69eb5afe59aed366.png" />
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="using-linear-systems">
-<h1>Using linear systems<a class="headerlink" href="#using-linear-systems" title="Permalink to this headline">#</a></h1>
+<div class="section" id="using-linear-systems">
+<h2>Using linear systems<a class="headerlink" href="#using-linear-systems" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tvd_mm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">Nit</span><span class="p">):</span>
@@ -482,7 +478,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 0.2015547752380371
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 0.2106943130493164
 </pre></div>
 </div>
 <img alt="../_images/c3dea868ace2bc9ea2686c5b16de9111f9ae1bd231641a32497fd176e798475b.png" src="../_images/c3dea868ace2bc9ea2686c5b16de9111f9ae1bd231641a32497fd176e798475b.png" />
@@ -534,7 +530,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 0.023653268814086914
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 0.02478337287902832
 </pre></div>
 </div>
 <img alt="../_images/07782ebdbfe2d5aed787360b3f182eac4c9b7e459caeb25f725e46f11a1595da.png" src="../_images/07782ebdbfe2d5aed787360b3f182eac4c9b7e459caeb25f725e46f11a1595da.png" />
@@ -603,10 +599,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 1.0714550018310547
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time taken = 1.130235195159912
 </pre></div>
 </div>
 <img alt="../_images/d0466873625c0cc45c1726718f85652298fb25d5655edadb4279ef9a26b45bfd.png" src="../_images/d0466873625c0cc45c1726718f85652298fb25d5655edadb4279ef9a26b45bfd.png" />
+</div>
 </div>
 </div>
 </div>
@@ -678,10 +675,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1D TV Denoising algorithms</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-linear-systems">Using linear systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-linear-systems">Using linear systems</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
